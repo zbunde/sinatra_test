@@ -11,6 +11,7 @@ feature 'managing items' do
       click_link "new"
       fill_in 'new_food', with: "new_food"
       click_on 'ok'
+      expect(page).to have_content "new_food"
     end
 
 end

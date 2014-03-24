@@ -2,15 +2,20 @@ require 'sinatra/base'
 
 class App < Sinatra::Base
 
+  ARRAY = []
+
   get "/" do
-  erb :index
-    end
+    erb :index, :locals => {:items => ARRAY}
+  end
 
   get "/new" do
     erb :new
   end
 
   post "/new" do
-    redirect "/"
+    ARRAY << params[:new_food]
+    redirect '/'
   end
+
+
 end
