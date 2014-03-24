@@ -9,7 +9,8 @@ feature 'managing items' do
       visit "/"
       expect(page).to have_title "food"
       click_link "new"
-  end
+      fill_in 'new_food', with: "new_food"
+    end
 
 end
 
