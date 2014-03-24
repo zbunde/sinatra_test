@@ -10,6 +10,7 @@ feature 'managing items' do
       expect(page).to have_title "food"
       click_link "new"
       fill_in 'new_food', with: "new_food"
+      click_on 'ok'
     end
 
 end
