@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Edit <%= item %></title>
+</head>
+<body>
+
+<p>Edit <%= item %> </p>
+<form action="/items/<%= id %>" method="post">
+  <input type="text" placeholder=<%= item %> name="name">
+  <input type="submit" value="edit">
+</form>
+</body>
+</html>
