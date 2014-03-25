@@ -35,7 +35,15 @@ class App < Sinatra::Base
   get "/items/:id/edit" do
     id = params[:id].to_i
     item = MENU[id]
-    erb :edit, :locals => {:item => item}
+    erb :edit, :locals => {:item => item, :id => id}
+  end
+
+  post "/items/:id" do
+    name = params[:name]
+    MENU[params[:id].to_i] = name
+
+    erb :items, :locals => {:menu => MENU}
+
   end
 
 end
