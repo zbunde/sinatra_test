@@ -2,6 +2,8 @@ require 'sinatra/base'
 
 class App < Sinatra::Base
 
+  set :method_override, true
+
   MENU = {}
 
   get "/" do
@@ -43,6 +45,14 @@ class App < Sinatra::Base
     MENU[params[:id].to_i] = name
 
     erb :items, :locals => {:menu => MENU}
+
+  end
+
+  delete "/items/:id" do
+    id = params[:id].to_i
+    MENU.delete(id)
+
+    redirect '/items'
 
   end
 

@@ -1,9 +1,15 @@
 <html>
 
 <body>
-<header> Showing <%= item %>
+<header> Showing <%= item %> </header>
 
-<a href="/items/<%= id %>/edit">edit</a>
-</header>
+<p><a href="/items/<%= id %>/edit">edit</a></p>
+<form action="/items/<%= id %>" method="POST">
+  <input type="hidden" name="_method" value="delete"/>
+  <input type="submit" value="delete"/>
+</form>
+
+
+
 </body>
 </html>

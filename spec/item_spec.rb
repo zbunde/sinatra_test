@@ -14,6 +14,7 @@ feature "Menu Site" do
     fill_in "name", :with => "new_item"
     click_on "New"
     expect(page).to have_content("new_item")
+
     click_on "new_item"
     expect(page).to have_content ("new_item")
 
@@ -25,6 +26,11 @@ feature "Menu Site" do
     click_on "edit"
     expect(page).to_not have_content ("new_item")
     expect(page).to have_content("PIZZZA")
+
+    click_on "PIZZZA"
+    click_on "delete"
+    expect(page).to_not have_content("PIZZZA")
+
 
   end
 end
