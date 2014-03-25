@@ -17,5 +17,12 @@ feature "Menu Site" do
     click_on "new_item"
     expect(page).to have_content ("new_item")
 
+    click_on "edit"
+    expect(page).to have_content("new_item")
+
+    fill_in "name", :with => "PIZZZA"
+    click_on "edit"
+    expect(page).to have_content("PIZZZA")
+
   end
 end
