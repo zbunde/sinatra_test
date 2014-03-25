@@ -2,20 +2,34 @@ require 'sinatra/base'
 
 class App < Sinatra::Base
 
-  ARRAY = []
+  MENU = {}
 
   get "/" do
-    erb :index, :locals => {:items => ARRAY}
+    erb :index
   end
 
-  get "/new" do
-    erb :new
+  post "/items" do
+    name = params[:name]
+    if MENU.empty?
+      id = 1
+    else
+      id = MENU.keys[-1] + 1
+    end
+
+    MENU[id] = name
+
+    erb :items, :locals => {:menu => MENU}
+
   end
 
-  post "/new" do
-    ARRAY << params[:new_food]
-    redirect '/'
+  get "/items" do
+    erb :items, :locals => {:menu => MENU}
   end
 
+  get "/items/:id" do
+    id = params[:id].to_i
+    item = MENU[id]
+    erb :show, :locals => {:item => item}
+  end
 
 end

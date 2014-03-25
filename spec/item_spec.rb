@@ -1,18 +1,21 @@
-require 'rspec/core'
 require 'capybara/rspec'
+require 'spec_helper'
 require_relative '../app'
 
 Capybara.app = App
 
-feature 'managing items' do
-  scenario 'user interacts with homepage' do
-      visit "/"
-      expect(page).to have_title "food"
-      click_link "new"
-      fill_in 'new_food', with: "new_food"
-      click_on 'ok'
-      expect(page).to have_content "new_food"
-    end
+feature "Menu Site" do
+  scenario "User can add items" do
+    visit '/'
+    expect(page).to have_content("food")
 
+    click_on "Items"
+    expect(page).to_not have_content("new_item")
+    fill_in "name", :with => "new_item"
+    click_on "New"
+    expect(page).to have_content("new_item")
+    click_on "new_item"
+    expect(page).to have_content ("new_item")
+
+  end
 end
-
